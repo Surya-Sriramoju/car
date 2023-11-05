@@ -1,0 +1,481 @@
+<?xml version="1.0" ?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="car" xmlns:xacro="http://ros.org/wiki/xacro">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.00468855629091802 1.11022302462516E-16 -0.0254794934870448"
+        rpy="0 0 0" />
+      <mass
+        value="24.6742778082474" />
+      <inertia
+        ixx="0.534894151660399"
+        ixy="3.50071071975304E-16"
+        ixz="0.000725414459402336"
+        iyy="1.91189180882094"
+        iyz="-5.80039116897645E-19"
+        izz="2.43620691473649" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="left_hinge_front">
+    <inertial>
+      <origin
+        xyz="-0.00018804220582222 -0.00349723942306573 0.0254"
+        rpy="0 0 0" />
+      <mass
+        value="0.463471125188868" />
+      <inertia
+        ixx="0.0019696722397811"
+        ixy="-9.54444832425322E-05"
+        ixz="-1.15308954332742E-20"
+        iyy="0.000199712201097773"
+        iyz="2.06497873296378E-19"
+        izz="0.00197930187165054" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/left_hinge_front.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/left_hinge_front.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lefthingefront"
+    type="continuous">
+    <origin
+      xyz="0.260225430373786 0.203199999999997 -0.1016"
+      rpy="0 0 0.0386416997343079" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_hinge_front" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="left_wheel_front">
+    <inertial>
+      <origin
+        xyz="-0.000853152420534325 2.22044604925031E-16 0.0476513642740031"
+        rpy="0 0 0" />
+      <mass
+        value="2.45721103449607" />
+      <inertia
+        ixx="0.00756699584418868"
+        ixy="-7.58295089250272E-19"
+        ixz="7.81970721688383E-05"
+        iyy="0.00756581690842141"
+        iyz="4.68158038625547E-19"
+        izz="0.0127525134745523" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/left_wheel_front.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/left_wheel_front.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="leftwheelfront"
+    type="continuous">
+    <origin
+      xyz="0.00514854787499253 0.0664863805378324 0.0253999999999999"
+      rpy="-1.5707963267949 0 -0.0386416997343077" />
+    <parent
+      link="left_hinge_front" />
+    <child
+      link="left_wheel_front" />
+    <axis
+      xyz="0.0386320839438716 0 0.999253502415755" />
+  </joint>
+  <link
+    name="right_hinge_front">
+    <inertial>
+      <origin
+        xyz="0.000126644735058662 0.00350000065207112 0.0253999999999999"
+        rpy="0 0 0" />
+      <mass
+        value="0.463471125188868" />
+      <inertia
+        ixx="0.00197247637744149"
+        ixy="-6.4331754146465E-05"
+        ixz="4.30580139317666E-21"
+        iyy="0.000196908063437385"
+        iyz="2.67027088500815E-19"
+        izz="0.00197930187165054" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/right_hinge_front.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/right_hinge_front.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="righthingefront"
+    type="continuous">
+    <origin
+      xyz="0.260225430373782 -0.2032 -0.1016"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_hinge_front" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="right_wheel_front">
+    <inertial>
+      <origin
+        xyz="-0.00716651551874273 2.22044604925031E-16 -0.0379651802523781"
+        rpy="0 0 0" />
+      <mass
+        value="2.45721103449607" />
+      <inertia
+        ixx="0.00757260049427837"
+        ixy="9.44985683425703E-22"
+        ixz="0.000187473683073766"
+        iyy="0.00756581690842141"
+        iyz="2.61159732120947E-20"
+        izz="0.0127469088244626" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/right_wheel_front.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/right_wheel_front.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rightwheelfront"
+    type="continuous">
+    <origin
+      xyz="0.00303336595865666 -0.0762600668461264 0.0253999999999999"
+      rpy="-1.5707963267949 0 0" />
+    <parent
+      link="right_hinge_front" />
+    <child
+      link="right_wheel_front" />
+    <axis
+      xyz="-0.0361605385834565 0 -0.999345993862663" />
+  </joint>
+  <link
+    name="left_hinge_back">
+    <inertial>
+      <origin
+        xyz="-0.00608319327731166 0.0980977088280104 0.0132336134453781"
+        rpy="0 0 0" />
+      <mass
+        value="0.463471125188868" />
+      <inertia
+        ixx="0.00197480417071053"
+        ixy="1.17534311094383E-17"
+        ixz="1.73229024851303E-22"
+        iyy="0.000194580270168345"
+        iyz="2.13077687210025E-19"
+        izz="0.00197930187165054" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/left_hinge_back.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/left_hinge_back.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lefthingeback"
+    type="fixed">
+    <origin
+      xyz="-0.241691376348906 0.1016 -0.0894336134453781"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="left_hinge_back" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="left_wheel_back">
+    <inertial>
+      <origin
+        xyz="5.55111512312578E-16 -2.22044604925031E-16 0.0381"
+        rpy="0 0 0" />
+      <mass
+        value="2.45721103449607" />
+      <inertia
+        ixx="0.00756581690842141"
+        ixy="-4.26086374897843E-19"
+        ixz="-3.48296029793558E-17"
+        iyy="0.00756581690842142"
+        iyz="-2.88541231556167E-20"
+        izz="0.0127536924103196" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/left_wheel_back.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/left_wheel_back.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="leftwheelback"
+    type="continuous">
+    <origin
+      xyz="-0.0060831932773121 0.177800000000009 0.0132336134453781"
+      rpy="-1.5707963267949 0 0" />
+    <parent
+      link="left_hinge_back" />
+    <child
+      link="left_wheel_back" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="right_hinge_back">
+    <inertial>
+      <origin
+        xyz="0.00608319327731077 -0.0980977088280104 0.0132336134453781"
+        rpy="0 0 0" />
+      <mass
+        value="0.463471125188869" />
+      <inertia
+        ixx="0.00197480417071053"
+        ixy="-1.99205061734725E-19"
+        ixz="-2.63421034547477E-22"
+        iyy="0.000194580270168346"
+        iyz="-2.60251941323126E-19"
+        izz="0.00197930187165054" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/right_hinge_back.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/right_hinge_back.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="righthingeback"
+    type="fixed">
+    <origin
+      xyz="-0.253857762903529 -0.1016 -0.0894336134453781"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="right_hinge_back" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="right_wheel_back">
+    <inertial>
+      <origin
+        xyz="0 0 -0.0381"
+        rpy="0 0 0" />
+      <mass
+        value="2.45721103449608" />
+      <inertia
+        ixx="0.00756581690842141"
+        ixy="3.07243844122817E-34"
+        ixz="9.93953842907557E-19"
+        iyy="0.00756581690842141"
+        iyz="-1.71100024437671E-35"
+        izz="0.0127536924103196" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/right_wheel_back.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/right_wheel_back.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rightwheelback"
+    type="continuous">
+    <origin
+      xyz="0.00608319327731088 -0.1778 0.0132336134453781"
+      rpy="-1.5707963267949 0 0" />
+    <parent
+      link="right_hinge_back" />
+    <child
+      link="right_wheel_back" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+</robot>
