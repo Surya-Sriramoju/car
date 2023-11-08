@@ -17,8 +17,8 @@ def generate_launch_description():
     # Get the location for empty world
     world = os.path.join(
         get_package_share_directory('car'),
-        'worlds',
-        'empty_world.world'
+        'competition','worlds',
+        'competition.world'
     )
 
     # Launch Description to run Gazebo Server

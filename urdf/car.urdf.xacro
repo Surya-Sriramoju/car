@@ -4,21 +4,22 @@
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
 <robot
   name="car" xmlns:xacro="http://ros.org/wiki/xacro">
+  <link name="dummy_link"></link>
   <link
     name="base_link">
     <inertial>
       <origin
-        xyz="0.00468855629091802 1.11022302462516E-16 -0.0254794934870448"
+        xyz="0.00470755801791906 1.11022302462516E-16 -0.0257454468120238"
         rpy="0 0 0" />
       <mass
-        value="24.6742778082474" />
+        value="24.9831666875052" />
       <inertia
-        ixx="0.534894151660399"
-        ixy="3.50071071975304E-16"
+        ixx="0.535393521016459"
+        ixy="3.47487696280531E-16"
         ixz="0.000725414459402336"
-        iyy="1.91189180882094"
-        iyz="-5.80039116897645E-19"
-        izz="2.43620691473649" />
+        iyy="1.91239117817699"
+        iyz="-6.00231416576723E-19"
+        izz="2.43625673542382" />
     </inertial>
     <visual>
       <origin
@@ -44,20 +45,27 @@
       </geometry>
     </collision>
   </link>
+
+  <joint name="dummy_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0" />
+    <parent link="dummy_link"/>
+    <child link="base_link"/>
+  </joint>
+
   <link
     name="left_hinge_front">
     <inertial>
       <origin
-        xyz="-0.00018804220582222 -0.00349723942306573 0.0254"
+        xyz="-0.000120277605189206 -0.00350022524290428 0.0254000000000001"
         rpy="0 0 0" />
       <mass
         value="0.463471125188868" />
       <inertia
-        ixx="0.0019696722397811"
-        ixy="-9.54444832425322E-05"
-        ixz="-1.15308954332742E-20"
-        iyy="0.000199712201097773"
-        iyz="2.06497873296378E-19"
+        ixx="0.00197270455567893"
+        ixy="-6.11013623244948E-05"
+        ixz="2.92397637481678E-20"
+        iyy="0.000196679885199945"
+        iyz="2.64224916325876E-19"
         izz="0.00197930187165054" />
     </inertial>
     <visual>
@@ -86,10 +94,10 @@
   </link>
   <joint
     name="lefthingefront"
-    type="continuous">
+    type="revolute">
     <origin
-      xyz="0.260225430373786 0.203199999999997 -0.1016"
-      rpy="0 0 0.0386416997343079" />
+      xyz="0.26023 0.2032 -0.1016"
+      rpy="0 0 0.038642" />
     <parent
       link="base_link" />
     <child
@@ -97,26 +105,26 @@
     <axis
       xyz="0 0 -1" />
     <limit
-      lower="0"
-      upper="0"
+      lower="-3.14"
+      upper="3.14"
       effort="0"
       velocity="0" />
   </joint>
   <link
-    name="left_wheel_front">
+    name="Left_wheel_front">
     <inertial>
       <origin
-        xyz="-0.000853152420534325 2.22044604925031E-16 0.0476513642740031"
+        xyz="-0.00306681650698584 -2.22044604925031E-16 0.0476632992826546"
         rpy="0 0 0" />
       <mass
         value="2.45721103449607" />
       <inertia
-        ixx="0.00756699584418868"
-        ixy="-7.58295089250272E-19"
-        ixz="7.81970721688383E-05"
+        ixx="0.00756591249272881"
+        ixy="1.0283575538749E-18"
+        ixz="-2.22681465401599E-05"
         iyy="0.00756581690842141"
-        iyz="4.68158038625547E-19"
-        izz="0.0127525134745523" />
+        iyz="-1.88457462443331E-19"
+        izz="0.0127535968260122" />
     </inertial>
     <visual>
       <origin
@@ -124,7 +132,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://car/meshes/left_wheel_front.STL" />
+          filename="package://car/meshes/Left_wheel_front.STL" />
       </geometry>
       <material
         name="">
@@ -138,7 +146,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://car/meshes/left_wheel_front.STL" />
+          filename="package://car/meshes/Left_wheel_front.STL" />
       </geometry>
     </collision>
   </link>
@@ -146,29 +154,29 @@
     name="leftwheelfront"
     type="continuous">
     <origin
-      xyz="0.00514854787499253 0.0664863805378324 0.0253999999999999"
-      rpy="-1.5707963267949 0 -0.0386416997343077" />
+      xyz="0.0051485 0.066486 0.0254"
+      rpy="-1.5708 0 -0.038642" />
     <parent
       link="left_hinge_front" />
     <child
-      link="left_wheel_front" />
+      link="Left_wheel_front" />
     <axis
-      xyz="0.0386320839438716 0 0.999253502415755" />
+      xyz="-0.0042924 0 0.99999" />
   </joint>
   <link
     name="right_hinge_front">
     <inertial>
       <origin
-        xyz="0.000126644735058662 0.00350000065207112 0.0253999999999999"
+        xyz="-7.59833866305626E-05 0.00350146683239372 0.0254"
         rpy="0 0 0" />
       <mass
-        value="0.463471125188868" />
+        value="0.463471125188869" />
       <inertia
-        ixx="0.00197247637744149"
-        ixy="-6.4331754146465E-05"
-        ixz="4.30580139317666E-21"
-        iyy="0.000196908063437385"
-        iyz="2.67027088500815E-19"
+        ixx="0.00197396624132431"
+        ixy="3.86134664937877E-05"
+        ixz="-1.49124554135027E-20"
+        iyy="0.00019541819955457"
+        iyz="-2.49142633738966E-19"
         izz="0.00197930187165054" />
     </inertial>
     <visual>
@@ -197,9 +205,9 @@
   </link>
   <joint
     name="righthingefront"
-    type="continuous">
+    type="revolute">
     <origin
-      xyz="0.260225430373782 -0.2032 -0.1016"
+      xyz="0.26023 -0.2032 -0.1016"
       rpy="0 0 0" />
     <parent
       link="base_link" />
@@ -208,8 +216,8 @@
     <axis
       xyz="0 0 -1" />
     <limit
-      lower="0"
-      upper="0"
+      lower="-3.14"
+      upper="3.14"
       effort="0"
       velocity="0" />
   </joint>
@@ -217,17 +225,17 @@
     name="right_wheel_front">
     <inertial>
       <origin
-        xyz="-0.00716651551874273 2.22044604925031E-16 -0.0379651802523781"
+        xyz="-0.00055358895971408 0 -0.0380130301891577"
         rpy="0 0 0" />
       <mass
-        value="2.45721103449607" />
+        value="2.45721103449608" />
       <inertia
-        ixx="0.00757260049427837"
-        ixy="9.44985683425703E-22"
-        ixz="0.000187473683073766"
-        iyy="0.00756581690842141"
-        iyz="2.61159732120947E-20"
-        izz="0.0127469088244626" />
+        ixx="0.00756825877729745"
+        ixy="6.67749374612028E-19"
+        ixz="-0.000112526214711238"
+        iyy="0.00756581690842142"
+        iyz="1.564637453037E-18"
+        izz="0.0127512505414436" />
     </inertial>
     <visual>
       <origin
@@ -257,14 +265,14 @@
     name="rightwheelfront"
     type="continuous">
     <origin
-      xyz="0.00303336595865666 -0.0762600668461264 0.0253999999999999"
-      rpy="-1.5707963267949 0 0" />
+      xyz="0.0030334 -0.07626 0.0254"
+      rpy="-1.5708 0 0" />
     <parent
       link="right_hinge_front" />
     <child
       link="right_wheel_front" />
     <axis
-      xyz="-0.0361605385834565 0 -0.999345993862663" />
+      xyz="0.021695 0 -0.99976" />
   </joint>
   <link
     name="left_hinge_back">
@@ -276,10 +284,10 @@
         value="0.463471125188868" />
       <inertia
         ixx="0.00197480417071053"
-        ixy="1.17534311094383E-17"
-        ixz="1.73229024851303E-22"
+        ixy="1.17512027222171E-17"
+        ixz="1.73229024851307E-22"
         iyy="0.000194580270168345"
-        iyz="2.13077687210025E-19"
+        iyz="2.14137992207302E-19"
         izz="0.00197930187165054" />
     </inertial>
     <visual>
@@ -310,7 +318,7 @@
     name="lefthingeback"
     type="fixed">
     <origin
-      xyz="-0.241691376348906 0.1016 -0.0894336134453781"
+      xyz="-0.24169 0.1016 -0.089434"
       rpy="0 0 0" />
     <parent
       link="base_link" />
@@ -363,29 +371,29 @@
     name="leftwheelback"
     type="continuous">
     <origin
-      xyz="-0.0060831932773121 0.177800000000009 0.0132336134453781"
-      rpy="-1.5707963267949 0 0" />
+      xyz="-0.0060832 0.1778 0.013234"
+      rpy="-1.5708 0 0" />
     <parent
       link="left_hinge_back" />
     <child
       link="left_wheel_back" />
     <axis
-      xyz="0 0 -1" />
+      xyz="0 0 1" />
   </joint>
   <link
     name="right_hinge_back">
     <inertial>
       <origin
-        xyz="0.00608319327731077 -0.0980977088280104 0.0132336134453781"
+        xyz="0.00608319327731088 -0.0980977088280104 0.0132336134453781"
         rpy="0 0 0" />
       <mass
-        value="0.463471125188869" />
+        value="0.463471125188868" />
       <inertia
         ixx="0.00197480417071053"
-        ixy="-1.99205061734725E-19"
-        ixz="-2.63421034547477E-22"
+        ixy="-1.92674564203676E-19"
+        ixz="-2.63421034547483E-22"
         iyy="0.000194580270168346"
-        iyz="-2.60251941323126E-19"
+        iyz="-2.72975061386773E-19"
         izz="0.00197930187165054" />
     </inertial>
     <visual>
@@ -416,7 +424,7 @@
     name="righthingeback"
     type="fixed">
     <origin
-      xyz="-0.253857762903529 -0.1016 -0.0894336134453781"
+      xyz="-0.25386 -0.1016 -0.089434"
       rpy="0 0 0" />
     <parent
       link="base_link" />
@@ -469,8 +477,8 @@
     name="rightwheelback"
     type="continuous">
     <origin
-      xyz="0.00608319327731088 -0.1778 0.0132336134453781"
-      rpy="-1.5707963267949 0 0" />
+      xyz="0.0060832 -0.1778 0.013234"
+      rpy="-1.5708 0 0" />
     <parent
       link="right_hinge_back" />
     <child
@@ -478,4 +486,184 @@
     <axis
       xyz="0 0 -1" />
   </joint>
+  <link
+    name="lidar_link">
+    <inertial>
+      <origin
+        xyz="0 -0.01 0.0508"
+        rpy="0 0 0" />
+      <mass
+        value="0.823703678020892" />
+      <inertia
+        ixx="0.00123998155146124"
+        ixy="2.12072395209952E-51"
+        ixz="6.93649765430231E-35"
+        iyy="0.00123998155146124"
+        iyz="-4.10781393993733E-36"
+        izz="0.00106284132982392" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/lidar_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://car/meshes/lidar_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lidar_joint"
+    type="fixed">
+    <origin
+      xyz="0.37453 -0.01 0"
+      rpy="0 0 3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="lidar_link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+
+      <ros2_control name="GazeboSystem" type="system">
+ <hardware>
+     <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+ </hardware>
+ <!-- # Velocity Controllers -->
+
+ <joint name="leftwheelfront">
+     <command_interface name="velocity">
+         <param name="min">-1000.0</param>
+         <param name="max">1000.0</param>
+     </command_interface>
+     <state_interface name="position"/>
+     <state_interface name="velocity"/>
+ </joint>
+
+  <joint name="rightwheelfront">
+     <command_interface name="velocity">
+         <param name="min">-1000.0</param>
+         <param name="max">1000.0</param>
+     </command_interface>
+     <state_interface name="position"/>
+     <state_interface name="velocity"/>
+ </joint>
+
+  <joint name="leftwheelback">
+     <command_interface name="velocity">
+         <param name="min">-1000.0</param>
+         <param name="max">1000.0</param>
+     </command_interface>
+     <state_interface name="position"/>
+     <state_interface name="velocity"/>
+ </joint>
+
+  <joint name="rightwheelback">
+     <command_interface name="velocity">
+         <param name="min">-1000.0</param>
+         <param name="max">1000.0</param>
+     </command_interface>
+     <state_interface name="position"/>
+     <state_interface name="velocity"/>
+ </joint>
+
+<!-- # Position Controller -->
+ <joint name="lefthingefront">
+     <command_interface name="position">
+         <param name="min">-3.14</param>
+         <param name="max">3.14</param>
+     </command_interface>
+     <state_interface name="position"/>
+     <state_interface name="velocity"/>
+ </joint>
+
+  <joint name="righthingefront">
+     <command_interface name="position">
+         <param name="min">-3.14</param>
+         <param name="max">3.14</param>
+     </command_interface>
+     <state_interface name="position"/>
+     <state_interface name="velocity"/>
+ </joint>
+
+ </ros2_control>
+
+ <gazebo>
+    <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+        <parameters>$(find car)/config/control.yaml</parameters>
+    </plugin>
+ </gazebo>
+
+ <gazebo reference="lidar_link">
+  <sensor name="lidar" type="ray">
+    <pose>0.0 0.0 0.227 0 0 0</pose>
+    <always_on>true</always_on>
+    <visualize>true</visualize>
+    <update_rate>5</update_rate>
+    <ray>
+      <scan>
+        <horizontal>
+          <samples>360</samples>
+          <resolution>1.00000</resolution>
+          <min_angle>0.000000</min_angle>
+          <max_angle>6.280000</max_angle>
+        </horizontal>
+      </scan>
+      <range>
+        <min>0.120000</min>
+        <max>3.5</max>
+        <resolution>0.015000</resolution>
+      </range>
+      <noise>
+        <type>gaussian</type>
+        <mean>0.0</mean>
+        <stddev>0.01</stddev>
+      </noise>
+    </ray>
+    <plugin name="scan" filename="libgazebo_ros_ray_sensor.so">
+      <ros>
+        <remapping>~/out:=scan</remapping>
+      </ros>
+      <output_type>sensor_msgs/LaserScan</output_type>
+      <frame_name>lidar_link</frame_name>
+    </plugin>
+  </sensor>
+  </gazebo>
+
+  <gazebo reference="base_link">
+  <gravity>true</gravity>
+  <sensor name="imu_sensor" type="imu">
+    <always_on>true</always_on>
+    <update_rate>100</update_rate>
+    <visualize>true</visualize>
+    <topic>__default_topic__</topic>
+    <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+      <topicName>imu</topicName>
+      <bodyName>base_link</bodyName>
+      <updateRateHZ>10.0</updateRateHZ>
+      <gaussianNoise>0.0</gaussianNoise>
+      <xyzOffset>0 0 0</xyzOffset>
+      <rpyOffset>0 0 0</rpyOffset>
+      <frameName>base_link</frameName>
+      <initialOrientationAsReference>false</initialOrientationAsReference>
+    </plugin>
+    <pose>0 0 0 0 0 0</pose>
+  </sensor>
+</gazebo>
+
 </robot>

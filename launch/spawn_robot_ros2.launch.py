@@ -23,12 +23,18 @@ def generate_launch_description():
 
     # Position and orientation
     # [X, Y, Z]
-    position = [0.0, 0.0, 0.5]
+    # position = [1.0, -3.0, 1.0]
+    # # [Roll, Pitch, Yaw]
+    # orientation = [-0.5, 1.0, 1.5]
+
+    # Position and orientation
+    # [X, Y, Z]
+    position = [0.0, 0.0, 1.0]
     # [Roll, Pitch, Yaw]
     orientation = [0.0, 0.0, 0.0]
+
     # Base Name or robot
     robot_base_name = "car"
-    pkg_name = "car"
     ####### DATA INPUT END ##########
 
     # Path to robot model XACRO File
@@ -95,6 +101,44 @@ def generate_launch_description():
     )
 
 
+    # Joint State Broadcaster Node
+    joint_state_broadcaster_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["joint_state_broadcaster", "--controller-manager", "/controller_manager"],
+    )
+
+
+    # Joint Velocity Controller Node
+    robot_velocity_controller_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["velocity_controller", "--controller-manager", "/controller_manager"],
+    )
+
+    # Joint Position Controller Node
+    robot_position_controller_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["position_controller", "--controller-manager", "/controller_manager"],
+    )
+
+    # Delay start of robot_controller after `joint_state_broadcaster`
+    delay_robot_postion_controller_spawner_after_joint_state_broadcaster_spawner = RegisterEventHandler(
+        event_handler=OnProcessExit(
+            target_action=joint_state_broadcaster_spawner,
+            on_exit=[robot_position_controller_spawner],
+        )
+    )
+
+    # Delay start of robot_controller after `joint_state_broadcaster`
+    delay_robot_velocity_controller_spawner_after_joint_state_broadcaster_spawner = RegisterEventHandler(
+        event_handler=OnProcessExit(
+            target_action=joint_state_broadcaster_spawner,
+            on_exit=[robot_velocity_controller_spawner],
+        )
+    )
+
     # Static TF Transform
     tf=Node(
         package='tf2_ros',
@@ -115,6 +159,9 @@ def generate_launch_description():
             joint_state_publisher_node,
             robot_state_publisher,
             spawn_robot,
+            joint_state_broadcaster_spawner,
+            delay_robot_postion_controller_spawner_after_joint_state_broadcaster_spawner,
+            delay_robot_velocity_controller_spawner_after_joint_state_broadcaster_spawner,
             tf
         ]
     )

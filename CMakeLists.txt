@@ -10,6 +10,8 @@ urdf
 meshes
 launch
 worlds
+competition
+config
 DESTINATION share/${PROJECT_NAME}/
 )
 
@@ -21,6 +23,8 @@ install(
 install(
     PROGRAMS
     launch/robot_description_publisher.py
+    src/teleop_template.py
+    src/proportional_control.py
     DESTINATION lib/${PROJECT_NAME}
     )
 
@@ -28,6 +32,7 @@ find_package(robot_state_publisher REQUIRED)
 find_package(xacro REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
+find_package(ros2_control REQUIRED)
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
